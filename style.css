@@ -1,0 +1,160 @@
+/* CSS Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 1.6rem;
+}
+
+img,
+picture,
+video,
+canvas,
+svg,
+iframe {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* Variables */
+
+:root {
+  --color-very-dark-grayish-blue: hsl(217, 19%, 35%);
+  --color-desaturated-dark-blue: hsl(214, 17%, 51%);
+  --color-grayish-blue: hsl(212, 23%, 69%);
+  --color-light-grayish-blue: hsl(210, 46%, 95%);
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 1.3rem;
+  background-color: var(--color-light-grayish-blue);
+  color: var(--color-desaturated-dark-blue);
+  display: flex;
+  justify-content: center;
+}
+
+p {
+  margin-block-start: 1.2rem;
+  letter-spacing: 0.1px;
+  line-height: 1.55;
+}
+
+main {
+  margin-block-start: 260px;
+  max-inline-size: 730px;
+  max-block-size: 280px;
+  display: flex;
+  border-radius: 10px;
+  background-color: white;
+  margin-inline: 3rem;
+  overflow: auto;
+  box-shadow: 0px 20px 30px 12px hsl(212deg 23% 69% / 19%);
+}
+
+article {
+  display: flex;
+}
+
+h1 {
+  font-size: 2rem;
+  letter-spacing: 0.2px;
+  line-height: 1.4;
+  color: var(--color-very-dark-grayish-blue);
+}
+
+.article-image {
+  object-fit: cover;
+  object-position: left;
+  overflow: hidden;
+  filter: brightness(1.08) contrast(0.95);
+}
+
+.content {
+  position: relative;
+  flex: 72% 1 1;
+  padding: 3.2rem 3.9rem;
+}
+
+footer {
+  display: flex;
+  margin-block-start: 2rem;
+  gap: 1.5rem;
+}
+
+footer > img {
+  --size: 4rem;
+  max-inline-size: var(--size);
+  max-block-size: var(--size);
+  border-radius: 50%;
+}
+
+time {
+  display: block;
+  font-weight: 500;
+  color: var(--color-grayish-blue);
+}
+
+address {
+  font-weight: 700;
+  color: var(--color-very-dark-grayish-blue);
+  letter-spacing: 0.1px;
+}
+
+address,
+time {
+  font-style: normal;
+}
+
+button {
+  position: absolute;
+  right: 4rem;
+  bottom: 3.6rem;
+  --size: 3.2rem;
+  block-size: var(--size);
+  inline-size: var(--size);
+  border-radius: 50%;
+  border: none;
+  background-color: var(--color-light-grayish-blue);
+  background-image: url(/images/icon-share.svg);
+  background-repeat: no-repeat;
+  background-size: calc(var(--size) / 2);
+  background-position: center;
+}
