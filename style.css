@@ -82,14 +82,13 @@ main {
   max-inline-size: 730px;
   max-block-size: 280px;
   display: flex;
-  border-radius: 10px;
   background-color: white;
-  margin-inline: 3rem;
-  overflow: auto;
   box-shadow: 0px 20px 30px 12px hsl(212deg 23% 69% / 19%);
+  border-radius: 10px;
 }
 
 article {
+  border-radius: 10px;
   display: flex;
 }
 
@@ -105,9 +104,13 @@ h1 {
   object-position: left;
   overflow: hidden;
   filter: brightness(1.08) contrast(0.95);
+  border-start-start-radius: 10px;
+  border-end-start-radius: 10px;
 }
 
 .content {
+  --share-button-block-end: 3.6rem;
+  --share-button-inline-end: 4rem;
   position: relative;
   flex: 72% 1 1;
   padding: 3.2rem 3.9rem;
@@ -143,18 +146,96 @@ time {
   font-style: normal;
 }
 
-button {
-  position: absolute;
-  right: 4rem;
-  bottom: 3.6rem;
+#share {
   --size: 3.2rem;
+  position: absolute;
+  inset-inline-end: var(--share-button-inline-end);
+  inset-block-end: var(--share-button-block-end);
   block-size: var(--size);
   inline-size: var(--size);
   border-radius: 50%;
   border: none;
   background-color: var(--color-light-grayish-blue);
-  background-image: url(/images/icon-share.svg);
+  cursor: pointer;
+}
+
+#share > svg {
+  margin-inline: auto;
+}
+
+/* Manage active state of button */
+#share.share-button-active {
+  background-color: var(--color-desaturated-dark-blue);
+}
+
+#share.share-button-active > svg > path {
+  fill: white;
+}
+
+.share-popup {
+  --transition: opacity ease-in 0.2s, inset-block-end ease-out 0.25s;
+  background-color: var(--color-very-dark-grayish-blue);
+  position: absolute;
+  inset-inline-end: 3rem;
+  inset-block-end: calc(var(--share-button-block-end) + 4rem);
+  block-size: 55px;
+  inline-size: 248px;
+  transform: translateX(98px);
+  border-radius: 10px;
+  text-transform: uppercase;
+  display: flex;
+  opacity: 0;
+  pointer-events: none;
+  align-items: center;
+  gap: 1.6rem;
+  font-size: 1.2rem;
+  padding-inline: 3.7rem;
+  transition: var(--transition);
+}
+
+.share-popup.opened {
+  display: flex;
+  opacity: 1;
+  pointer-events: inherit;
+  inset-block-end: calc(var(--share-button-block-end) + 6rem);
+}
+
+.share-popup > button {
+  block-size: 20px;
+  inline-size: 20px;
+  border: none;
+}
+
+.share-popup > p {
+  letter-spacing: 5.7px;
+  margin: 0;
+  color: var(--color-grayish-blue);
+}
+
+.share-popup > button {
+  background-color: inherit;
   background-repeat: no-repeat;
-  background-size: calc(var(--size) / 2);
   background-position: center;
+  cursor: pointer;
+}
+
+button.facebook {
+  background-image: url(images/icon-facebook.svg);
+}
+
+button.x {
+  background-image: url(images/icon-twitter.svg);
+}
+
+button.pinterest {
+  background-image: url(images/icon-pinterest.svg);
+}
+
+.share-popup::after {
+  content: '';
+  block-size: 2rem;
+  inline-size: 2rem;
+  background-color: var(--color-very-dark-grayish-blue);
+  position: absolute;
+  transform: translate(77px, 25px) rotate(45deg);
 }
