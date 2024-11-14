@@ -157,6 +157,7 @@ time {
   border: none;
   background-color: var(--color-light-grayish-blue);
   cursor: pointer;
+  z-index: 2;
 }
 
 #share > svg {
@@ -238,4 +239,72 @@ button.pinterest {
   background-color: var(--color-very-dark-grayish-blue);
   position: absolute;
   transform: translate(77px, 25px) rotate(45deg);
+}
+
+@media screen and (max-width: 900px) {
+  main {
+    margin-block-start: 74px;
+    max-inline-size: 326px;
+    max-block-size: 512px;
+    margin-inline: 2.4rem;
+  }
+  
+  article {
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .article-image {
+    border-start-end-radius: 10px;
+    border-end-start-radius: unset;
+    flex-basis: 200px;
+    object-position: 0 -16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    letter-spacing: 0.2px;
+    line-height: 1.5;
+  }
+
+  .content {
+    --share-button-block-end: 1.6rem;
+    --share-button-inline-end: 3.1rem;
+    flex-basis: unset;
+    padding: 3.6rem 3.2rem 2rem;
+  }
+
+  footer {
+    margin-block-start: 3.2rem;
+  }
+
+  /* Manage opened state */
+  
+  .share-popup {
+    --transition: opacity ease-in 0.2s, inset-block-end ease-out 0.25s;
+    inset-block-end: -64px;
+    inset-inline-end: 0;
+    transform: unset;
+    block-size: 64px;
+    inline-size: 100%;
+    border-radius: 0 0 10px 10px;
+    text-transform: uppercase;
+    opacity: 0;
+    pointer-events: none;
+    align-items: center;
+    gap: 1.6rem;
+    padding-inline: 3.2rem;
+    z-index: 1;
+  }
+
+  .share-popup::after {
+    display: none;
+  }
+
+  .share-popup.opened {
+    display: flex;
+    opacity: 1;
+    pointer-events: inherit;
+    inset-block-end: 0;
+  }
 }
